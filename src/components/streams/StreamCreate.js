@@ -1,2 +1,9 @@
 import React from 'react';
-export default const 
+const StreamCreate  = () => {
+    return(
+        <div>
+            StreamCreate
+        </div>
+    )
+}
+export default StreamCreate;
