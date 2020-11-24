@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { signIn, signOut } from '../actions' 
 class GoogleAuth extends React.Component {
     state = { isSignedIn: null }
     componentDidMount() {
@@ -20,15 +22,20 @@ class GoogleAuth extends React.Component {
             })
         })
     }
-    onAuthChange = () => {
+    onAuthChange = (isSignedIn) => {
+        if(isSignedIn){
+            this.props.signIn();
+        }else{
+            this.props.signOut();
+        }
         this.setState({
             isSignedIn: this.auth.isSignedIn.get()
         })
     }
-    onSignInGoogle = () => {
+    onSignInGoogleClick = () => {
         this.auth.signIn();
     }
-    onSignOutGoogle = () => {
+    onSignOutGoogleClick = () => {
         this.auth.signOut();
     }
     renderAuthButton() {
@@ -36,14 +43,14 @@ class GoogleAuth extends React.Component {
             return null
         }else if(this.state.isSignedIn){
             return (
-                <button className="btn btn-danger" onClick={this.onSignOutGoogle}>
+                <button className="btn btn-danger" onClick={this.onSignOutGoogleClick}>
                     <span><i className="fab fa-google px-2"></i></span>
                     Sign Out
                 </button>
             )
         }else {
             return (
-                <button className="btn btn-success" onClick={this.onSignInGoogle}>
+                <button className="btn btn-success" onClick={this.onSignInGoogleClick}>
                     <span><i className="fab fa-google px-2"></i></span>
                     Sign in with Google
                 </button>
@@ -56,7 +63,10 @@ class GoogleAuth extends React.Component {
         )
     }
 }
-export default GoogleAuth;
+export default connect(
+    null,
+    { signIn, signOut }
+    )(GoogleAuth);
 
 // REVIEW SIGN IN WITH GG https://developers.google.com/identity/sign-in/web/reference
 // 1. Load the Google APIs platform library to create the NOTE gapi object
