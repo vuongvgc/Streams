@@ -1,3 +1,9 @@
+
+# // REVIEW SIGN IN WITH GG https://developers.google.com/identity/sign-in/web/reference
+// 1. Load the Google APIs platform library to create the NOTE gapi object
+// 2. Load the NOTE auth2 library
+// 3. gapi.auth2.getAuthInstance() Returns the NOTE GoogleAuth object
+// 4. GoogleAuth.isSignedIn.get() Returns whether the current user is currently signed in. TODO: true false
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
