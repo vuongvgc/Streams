@@ -3,14 +3,15 @@ import { Field, reduxForm } from 'redux-form';
 class StreamCreate  extends React.Component {
     renderError({error, touched}){
         if(error && touched){
-           return <div className="text-danger">{error}</div>
+           return <div className="alert alert-danger">{error}</div>
         }
     }
     renderInput = ({input, label, meta}) => {
         // console.log(propsForm)
+        const className = meta.error && meta.touched ? 'text-danger' : ''
         return (
             <div className="form-group">
-                <label>{label}</label>
+                <label className={className}>{label}</label>
                 <input className="form-control" {...input} autoComplete="off" />
                 {this.renderError(meta)}
             </div>
