@@ -10,16 +10,16 @@ const App = () => {
     return(
        <div>
             <BrowserRouter>
-                <div>
+                <div className="container">
                     <Header />
                     <Route path="/" exact component={StreamList} />
                     <Route path="/streams/new" component={StreamCreate} />
                     <Route path="/streams/edit" component={StreamEdit} />
                     <Route path="/streams/delete" component={StreamDelete} />
                     <Route path="/streams/show" component={StreamShow} />
+                    <footer><h1>footer</h1></footer>
                 </div>
             </BrowserRouter>
-            <footer><h1>footer</h1></footer>
        </div>
     )
 }
