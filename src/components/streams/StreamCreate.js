@@ -5,8 +5,8 @@ class StreamCreate  extends React.Component {
         console.log(this.props)
         return(
             <div>
-                <Field name="title" />
-                <Field name="description" />
+                <Field name="title" component="input" type="text"/>
+                <Field name="description" component="input" type="textArea" />
             </div>
         )
     }
