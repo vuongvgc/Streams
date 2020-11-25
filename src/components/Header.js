@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import GoogleAuth from './GoogleAuth';
 const Header = () => {
   return (
-    <nav className="row justify-content-around p-2">
+    <nav className="row justify-content-around p-2 navbar-light bg-light">
       <Link to="/" className="nav-link">
           Streamer
       </Link>
