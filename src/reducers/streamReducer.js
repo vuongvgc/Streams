@@ -15,7 +15,9 @@ const streamReducer = (state={}, action) => {
         case EDIT_STREAM:
             return {...state, [payload.id]: payload};
         case CREATE_STREAM:
-            return {...state,  [payload.id]: payload}
+            return {...state,  [payload.id]: payload};
+        case DELETE_STREAM:
+            return {...state, [payload]: undefined }
         default:
             return state
     }
