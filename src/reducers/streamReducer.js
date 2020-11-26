@@ -7,6 +7,7 @@ import {
     EDIT_STREAM,
     DELETE_STREAM
 } from '../actions/types';
+import _ from 'lodash';
 const streamReducer = (state={}, action) => {
     const {payload, type } = action.payload
     switch(type) {
@@ -17,7 +18,7 @@ const streamReducer = (state={}, action) => {
         case CREATE_STREAM:
             return {...state,  [payload.id]: payload};
         case DELETE_STREAM:
-            return {...state, [payload]: undefined }
+            return _.omit(state, payload.id);
         default:
             return state
     }
