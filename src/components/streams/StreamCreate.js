@@ -1,58 +1,70 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import { createStream } from "../../actions";
+import { createStream } from "../../actions/index";
 class StreamCreate extends React.Component {
-  renderError({ error, touched }) {
-    if (error && touched) {
-      return <div className="alert alert-danger">{error}</div>;
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: " ",
+      description: " ",
+    };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
-  renderInput = ({ input, label, meta }) => {
-    // console.log(propsForm)
-    const className = meta.error && meta.touched ? "text-danger" : "";
-    return (
-      <div className="form-group">
-        <label className={className}>{label}</label>
-        <input className="form-control" {...input} autoComplete="off" />
-        {this.renderError(meta)}
-      </div>
-    );
-  };
-  onSubmit = (formValue) => {
-    this.props.createStream(formValue);
+
+  handleInputChange(event) {
+    const target = event.target;
+    const name = target.name;
+    // console.log(name);
+    this.setState({
+      [name]: target.value,
+    });
+  }
+  handleSubmit = (event) => {
+    const stream = {
+      title: this.state.title,
+      description: this.state.description,
+    };
+    this.props.createStream(stream);
+    event.preventDefault();
   };
   render() {
-    // console.log(this.props)
+    const { title, description } = this.state;
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field
-          name="title"
-          component={this.renderInput}
-          label="Enter a title"
-        />
-        <Field
-          name="description"
-          component={this.renderInput}
-          label="Enter a description"
-        />
-        <button className="btn btn-primary">Submit</button>
+      <form>
+        <div className="form-group">
+          <label>
+            Title:
+            <input
+              name="title"
+              type="text"
+              value={title}
+              onChange={this.handleInputChange}
+              className="form-control"
+            />
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            Description
+            <input
+              name="description"
+              type="text"
+              value={description}
+              onChange={this.handleInputChange}
+              className="form-control"
+            />
+          </label>
+        </div>
+        <button
+          className="btn btn-success"
+          type="button"
+          onClick={this.handleSubmit}
+        >
+          Submit
+        </button>
       </form>
     );
   }
 }
-const validate = (formValues) => {
-  let error = {};
-  if (!formValues.title) {
-    error.title = "You must enter title";
-  }
-  if (!formValues.description) {
-    error.description = "You must enter description";
-  }
-  return error;
-};
-const formWarped = reduxForm({
-  form: "streamCreate",
-  validate: validate,
-})(StreamCreate);
-export default connect(null, { createStream })(formWarped);
+export default connect(null, { createStream: createStream })(StreamCreate);
