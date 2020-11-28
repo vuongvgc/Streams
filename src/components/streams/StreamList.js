@@ -9,9 +9,14 @@ class StreamList extends React.Component {
     return this.props.streams.map((item) => {
       const { id, title, description } = item;
       return (
-        <div className="alert alert-dark" role="alert" key={id}>
-          <h4 className="text-danger">{title}</h4>
-          <p>{description}</p>
+        <div className="alert alert-dark row" role="alert" key={id}>
+          <div className="col-2">
+            <i className="fa fa-video W-100"></i>
+          </div>
+          <div className="col-10">
+            <h4 className="text-danger">{title}</h4>
+            <p>{description}</p>
+          </div>
         </div>
       );
     });
