@@ -23,11 +23,16 @@ class StreamList extends React.Component {
     });
   };
   renderAdmin = (stream) => {
-    console.log(stream);
+    // console.log(stream);
     if (stream.userId === this.props.currentId) {
       return (
         <div className="row">
-          <button className="btn btn-primary mx-1">Edit</button>
+          <Link
+            to={`/streams/edit/${stream.id}`}
+            className="btn btn-primary mx-1"
+          >
+            Edit
+          </Link>
           <button className="btn btn-danger">Delete</button>
         </div>
       );
@@ -62,7 +67,7 @@ class StreamList extends React.Component {
     });
   };
   render() {
-    console.log(this.props.streams);
+    // console.log(this.props.streams);
     return (
       <div className="container">
         <h2 className="text-center text-uppercase">Streams</h2>
