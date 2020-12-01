@@ -31,6 +31,8 @@ export const createStream = (formValue) => {
       payload: response.data,
     });
   };
+  // do some Programmatic navigation to
+  // get the user back to the root reducer
 };
 export const fetchStreams = () => {
   return async (dispatch) => {
