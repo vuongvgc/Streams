@@ -23,7 +23,7 @@ class StreamList extends React.Component {
     });
   };
   renderAdmin = (stream) => {
-    console.log(stream);
+    // console.log(stream);
     if (stream.userId === this.props.currentId) {
       return (
         <div className="row">
@@ -67,7 +67,7 @@ class StreamList extends React.Component {
     });
   };
   render() {
-    console.log(this.props.streams);
+    // console.log(this.props.streams);
     return (
       <div className="container">
         <h2 className="text-center text-uppercase">Streams</h2>
