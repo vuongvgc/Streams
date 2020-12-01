@@ -8,6 +8,7 @@ import {
   DELETE_STREAM,
 } from "./types";
 import streams from "../apis/streams";
+import history from "../history";
 export const signIn = (userID) => {
   return {
     type: SIGN_IN,
@@ -30,9 +31,10 @@ export const createStream = (formValue) => {
       type: CREATE_STREAM,
       payload: response.data,
     });
+    history.push("/");
   };
   // do some Programmatic navigation to
-  // get the user back to the root reducer
+  // get the user back to the root router
 };
 export const fetchStreams = () => {
   return async (dispatch) => {
