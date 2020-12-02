@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchStreams } from "../../actions";
+import { fetchStreams, deleteStream } from "../../actions";
 class StreamList extends React.Component {
   componentDidMount() {
     this.props.fetchStreams();
@@ -33,7 +33,12 @@ class StreamList extends React.Component {
           >
             Edit
           </Link>
-          <button className="btn btn-danger">Delete</button>
+          <button
+            className="btn btn-danger"
+            onClick={() => this.props.deleteStream(stream.id)}
+          >
+            Delete
+          </button>
         </div>
       );
     }
@@ -84,4 +89,6 @@ const mapStateToProps = (state) => {
     isSignedIn: state.auth.isSignedIn,
   };
 };
-export default connect(mapStateToProps, { fetchStreams })(StreamList);
+export default connect(mapStateToProps, { fetchStreams, deleteStream })(
+  StreamList
+);
