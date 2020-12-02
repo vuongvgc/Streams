@@ -1,12 +1,23 @@
 import React from "react";
+import { connect } from "react-redux";
+import { deleteStream } from "../../actions";
 import Modal from "../Modal";
-const StreamDelete = () => {
+import history from "../../history";
+const StreamDelete = (props) => {
   const action = (
     <div>
-      <button type="button" class="btn btn-danger mx-2">
+      <button
+        type="button"
+        class="btn btn-danger mx-2"
+        onClick={() => props.deleteStream()}
+      >
         Delete
       </button>
-      <button type="button" class="btn btn-secondary">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        onClick={() => history.push("/")}
+      >
         Cancel
       </button>
     </div>
@@ -22,4 +33,4 @@ const StreamDelete = () => {
     </div>
   );
 };
-export default StreamDelete;
+export default connect(null, { deleteStream })(StreamDelete);
