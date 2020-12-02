@@ -61,6 +61,7 @@ export const editStream = (id, formValues) => {
       type: EDIT_STREAM,
       payload: response.data,
     });
+    history.push("/");
   };
 };
 export const deleteStream = (id) => {
