@@ -4,14 +4,14 @@ import history from "../history";
 const Modal = (props) => {
   return ReactDOM.createPortal(
     <div
-      class="modal fade show d-block"
+      class="modal fade show d-block bg-dark"
       id="exampleModal"
       tabindex="-1"
       role="dialog"
       onClick={() => history.push("/")}
     >
       <div
-        class="modal-dialog"
+        class="modal-dialog modal-dialog-centered"
         role="document"
         onClick={(e) => e.stopPropagation()}
       >
@@ -25,7 +25,7 @@ const Modal = (props) => {
             Are you sure want to delete this stream ?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-danger">
               Delete
             </button>
             <button
