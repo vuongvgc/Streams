@@ -18,24 +18,11 @@ const Modal = (props) => {
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">
-              Delete Stream
+              {props.title}
             </h5>
           </div>
-          <div class="modal-body">
-            Are you sure want to delete this stream ?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger">
-              Delete
-            </button>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Cancel
-            </button>
-          </div>
+          <div class="modal-body">{props.content}</div>
+          <div class="modal-footer">{props.action}</div>
         </div>
       </div>
     </div>,
