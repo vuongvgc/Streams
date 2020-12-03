@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchStreams, deleteStream } from "../../actions";
+import { fetchStreams } from "../../actions";
+import history from "../../history";
 class StreamList extends React.Component {
   componentDidMount() {
     this.props.fetchStreams();
@@ -35,7 +36,7 @@ class StreamList extends React.Component {
           </Link>
           <button
             className="btn btn-danger"
-            onClick={() => this.props.deleteStream(stream.id)}
+            onClick={() => history.push(`/streams/delete/${stream.id}`)}
           >
             Delete
           </button>
@@ -89,6 +90,4 @@ const mapStateToProps = (state) => {
     isSignedIn: state.auth.isSignedIn,
   };
 };
-export default connect(mapStateToProps, { fetchStreams, deleteStream })(
-  StreamList
-);
+export default connect(mapStateToProps, { fetchStreams })(StreamList);
