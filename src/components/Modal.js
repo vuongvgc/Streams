@@ -12,7 +12,7 @@ const Modal = (props) => {
       id="exampleModal"
       tabindex="-1"
       role="dialog"
-      onClick={() => history.push("/")}
+      onClick={() => props.onDismiss()}
     >
       <div
         class="modal-dialog modal-dialog-centered"
