@@ -36,7 +36,7 @@ class StreamList extends React.Component {
           </Link>
           <button
             className="btn btn-danger"
-            onClick={() => history.push("/streams/delete")}
+            onClick={() => history.push(`/streams/delete/${stream.id}`)}
           >
             Delete
           </button>
