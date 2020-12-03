@@ -5,7 +5,7 @@ import Modal from "../Modal";
 import history from "../../history";
 const StreamDelete = (props) => {
   const action = (
-    <div>
+    <React.Fragment>
       <button
         type="button"
         class="btn btn-danger mx-2"
@@ -20,7 +20,7 @@ const StreamDelete = (props) => {
       >
         Cancel
       </button>
-    </div>
+    </React.Fragment>
   );
   return (
     <div>
