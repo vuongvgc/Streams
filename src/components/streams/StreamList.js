@@ -64,7 +64,9 @@ class StreamList extends React.Component {
             <i className="fa fa-video W-100"></i>
           </div>
           <div className="col-6">
-            <h4 className="text-danger">{title}</h4>
+            <Link to={`/stream/${id}`} className="text-primary text-uppercase">
+              {title}
+            </Link>
             <p>{description}</p>
           </div>
           <div className="col-4">{this.renderAdmin(item)}</div>
